@@ -6,7 +6,7 @@ then
 
   echo "Scaling compute ASG to 1"
   sleep 5000
-  aws-retry.sh aws autoscaling set-desired-capacity --auto-scaling-group-name=$ASG  --desired-capacity 1
+  aws-retry.sh aws autoscaling set-desired-capacity --auto-scaling-group-name=${ASG}  --desired-capacity 1
   echo "Done"
 
 elif [ "$ACTION_TYPE" == "SCALE_UP" ]
@@ -17,7 +17,7 @@ then
   do
     new_capacity=`expr $current_capacity + 1`
     echo "Setting a new cluster capacity to: $new_capacity"
-    aws-retry.sh aws autoscaling set-desired-capacity --auto-scaling-group-name=$ASG  --desired-capacity $new_capacity
+    aws-retry.sh aws autoscaling set-desired-capacity --auto-scaling-group-name=${ASG}  --desired-capacity $new_capacity
     sleep 30s
     current_capacity=$(aws-retry.sh aws autoscaling describe-auto-scaling-groups --auto-scaling-group-name=${ASG}| jq .AutoScalingGroups[0].DesiredCapacity)
   done
