@@ -1,4 +1,5 @@
 #!/usr/bin/bash
+aws configure set default.region us-west-1
 
 if [ "$ACTION_TYPE" == "SCALE_DOWN" ]
 then
