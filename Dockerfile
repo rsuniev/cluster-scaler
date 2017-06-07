@@ -17,7 +17,8 @@ RUN pip install --upgrade awscli
 
 COPY bin/* /usr/local/bin/
 
-COPY . /cluster-scaler
-WORKDIR /cluster-scaler
+ADD start.sh /run.sh
+RUN chmod +x /run.sh
 
-CMD scripts/run.sh
+ENTRYPOINT ["/run.sh"]
+CMD [""]
