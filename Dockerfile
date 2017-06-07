@@ -17,7 +17,7 @@ RUN pip install --upgrade awscli
 
 COPY bin/* /usr/local/bin/
 
-ADD start.sh /run.sh
+ADD run.sh /run.sh
 RUN chmod +x /run.sh
 
 ENTRYPOINT ["/run.sh"]
