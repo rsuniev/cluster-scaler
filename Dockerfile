@@ -9,7 +9,7 @@ RUN apt-get install -y \
     python \
     python-pip \
     python-virtualenv \
-    vim && \
+    vim \
     jq && \
     rm -rf /var/lib/apt/lists/*
 
