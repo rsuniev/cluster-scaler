@@ -5,6 +5,7 @@ if [ "$ACTION_TYPE" == "SCALE_DOWN" ]
 then
 
   echo "Scaling compute ASG to 1"
+  sleep 5000
   aws-retry.sh aws autoscaling set-desired-capacity --auto-scaling-group-name=$ASG  --desired-capacity 1
   echo "Done"
 
