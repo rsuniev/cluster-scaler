@@ -5,7 +5,7 @@ aws configure set default.region eu-west-1
 if [ "ACTION_TYPE" == "SCALE_DOWN" ]
 then
 
-  echo "Scaling compute ASG to 1"
+  echo "Scaling compute ASG to DESIRED_CAPACITY"
   aws-retry.sh aws autoscaling update-auto-scaling-group --auto-scaling-group-name=ASG --min-size DESIRED_CAPACITY --desired-capacity DESIRED_CAPACITY
   echo "Done"
 
