@@ -16,6 +16,8 @@ RUN apt-get install -y \
 
 RUN pip install --upgrade awscli
 
+COPY bin/* /usr/local/bin/
+
 ADD run.sh /run.sh
 RUN chmod +x /run.sh
 
