@@ -2,14 +2,14 @@
 export PATH=$PATH:/usr/local/bin
 aws configure set default.region eu-west-1
 
-if [ "$ACTION_TYPE" == "SCALE_DOWN" ]
+if [ "ACTION_TYPE" == "SCALE_DOWN" ]
 then
 
   echo "Scaling compute ASG to 1"
   aws-retry.sh aws autoscaling update-auto-scaling-group --auto-scaling-group-name=ASG --min-size DESIRED_CAPACITY --desired-capacity DESIRED_CAPACITY
   echo "Done"
 
-elif [ "$ACTION_TYPE" == "SCALE_UP" ]
+elif [ "ACTION_TYPE" == "SCALE_UP" ]
 then
 
   current_capacity=$(aws-retry.sh aws autoscaling describe-auto-scaling-groups --auto-scaling-group-name=ASG | jq .AutoScalingGroups[0].DesiredCapacity)
@@ -25,6 +25,6 @@ then
 
 else
 
-  echo "Unknown action type: $ACTION_TYPE"
+  echo "Unknown action type: ACTION_TYPE"
 
 fi
